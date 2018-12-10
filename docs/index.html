@@ -1,69 +1,580 @@
-<!DOCTYPE html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!doctype html>
+<html>
+  <head>
+    <title>APIGEE AEM</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>APIGEE AEM</h1>
+    <div class="app-desc">APIGEE / AEM API</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="john.dorrance@capgemini.com">john.dorrance@capgemini.com</a></div>
+    <div class="app-desc">Version: 1.0.0-oas3</div>
+    <div class="app-desc">BasePath:/</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
 
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <script src="assets/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-  <script src="assets/js/main.js" type="text/javascript"></script>
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
 
-  <title>REST API Resources</title>
-</head>
-<body>
-  <div class="header">
-    <div class="top-bar">
-      <h1 id="logo"><a class="logo" href="/"><span>Swagger</span><span class="light">API Docs</span></a></h1>
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Attributes">Attributes</a></h4>
+  <ul>
+  <li><a href="#getAttribute"><code><span class="http-method">get</span> /{tenant}/attribute</code></a></li>
+  <li><a href="#getAttributes"><code><span class="http-method">get</span> /{tenant}/attributes</code></a></li>
+  </ul>
+  <h4><a href="#Catalogs">Catalogs</a></h4>
+  <ul>
+  <li><a href="#getCatalog"><code><span class="http-method">get</span> /{tenant}/catalog</code></a></li>
+  <li><a href="#getCatalogs"><code><span class="http-method">get</span> /{tenant}/catalogs</code></a></li>
+  </ul>
+  <h4><a href="#Products">Products</a></h4>
+  <ul>
+  <li><a href="#getProduct"><code><span class="http-method">get</span> /{tenant}/product</code></a></li>
+  <li><a href="#getProducts"><code><span class="http-method">get</span> /{tenant}/products</code></a></li>
+  </ul>
+
+  <h1><a name="Attributes">Attributes</a></h1>
+  <div class="method"><a name="getAttribute"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/attribute</code></pre></div>
+    <div class="method-summary">returns a specific attribute (<span class="nickname">getAttribute</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The catalog id </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AttributeItem">AttributeItem</a>
+      
     </div>
-  </div>
-  <div class="model-container"></div>
-  <div class="content">
-    <div class="box clearfix">
-      <div class="sidebar">
-        <div class="section-box">
-          <div class="section-header">
-            Overview
-          </div>
-          <ul>
-            <li>Getting Started</li>
-          </ul>
-        </div>
-        <div class="section-box">
-          <div class="section-header">
-            <a href="#!/AttributesApi">AttributesApi</a>
-          </div>
-          <ul>
-            <li><a href="#!/AttributesApi#getAttribute">getAttribute</a></li>
-            <li><a href="#!/AttributesApi#getAttributes">getAttributes</a></li>
-          </ul>
-        </div>
-        <div class="section-box">
-          <div class="section-header">
-            <a href="#!/CatalogsApi">CatalogsApi</a>
-          </div>
-          <ul>
-            <li><a href="#!/CatalogsApi#getCatalog">getCatalog</a></li>
-            <li><a href="#!/CatalogsApi#getCatalogs">getCatalogs</a></li>
-          </ul>
-        </div>
-        <div class="section-box">
-          <div class="section-header">
-            <a href="#!/ProductsApi">ProductsApi</a>
-          </div>
-          <ul>
-            <li><a href="#!/ProductsApi#getProduct">getProduct</a></li>
-            <li><a href="#!/ProductsApi#getProducts">getProducts</a></li>
-          </ul>
-        </div>
-      </div>
-    <div class="non-sidebar">
-      <div class="main-content">
-        <h2>Getting Started</h2>
-        <p>To begin using your fancy HTTP API, follow the steps below.</p>
-        <p>You can add some helpful tips, here</p>
-      </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A single Attribute
+        <a href="#AttributeItem">AttributeItem</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getAttributes"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/attributes</code></pre></div>
+    <div class="method-summary">returns all atributes (<span class="nickname">getAttributes</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">startIndex (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The number of items to skip before starting to collect the result set. format: int32</div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The numbers of items to return. format: int32</div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#AttributesResponseSchema">AttributesResponseSchema</a>
+      
     </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns a list of all Attributes
+        <a href="#AttributesResponseSchema">AttributesResponseSchema</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Catalogs">Catalogs</a></h1>
+  <div class="method"><a name="getCatalog"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/catalog</code></pre></div>
+    <div class="method-summary">returns a specific catalog (<span class="nickname">getCatalog</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>      <div class="param">catalogIdentifier (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The catalog ID </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CatalogItem">CatalogItem</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A single catalog.
+        <a href="#CatalogItem">CatalogItem</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getCatalogs"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/catalogs</code></pre></div>
+    <div class="method-summary">returns all catalogs (<span class="nickname">getCatalogs</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">startIndex (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The number of items to skip before starting to collect the result set. format: int32</div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The numbers of items to return. format: int32</div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#CatalogsResponseSchema">CatalogsResponseSchema</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns a list of catalogs
+        <a href="#CatalogsResponseSchema">CatalogsResponseSchema</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Products">Products</a></h1>
+  <div class="method"><a name="getProduct"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/product</code></pre></div>
+    <div class="method-summary">returns a specific product (<span class="nickname">getProduct</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The product id </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ProductItem">ProductItem</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A single Product
+        <a href="#ProductItem">ProductItem</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getProducts"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /{tenant}/products</code></pre></div>
+    <div class="method-summary">returns all products (<span class="nickname">getProducts</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">tenant (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The tenant to restrict results to. </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">startIndex (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The number of items to skip before starting to collect the result set. format: int32</div>      <div class="param">limit (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The numbers of items to return. format: int32</div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ProductsResponseSchema">ProductsResponseSchema</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Returns a list of all Products
+        <a href="#ProductsResponseSchema">ProductsResponseSchema</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#AttributeItem"><code>AttributeItem</code></a></li>
+    <li><a href="#AttributesResponseSchema"><code>AttributesResponseSchema</code></a></li>
+    <li><a href="#CatalogItem"><code>CatalogItem</code></a></li>
+    <li><a href="#CatalogsResponseSchema"><code>CatalogsResponseSchema</code></a></li>
+    <li><a href="#ProductItem"><code>ProductItem</code></a></li>
+    <li><a href="#ProductsResponseSchema"><code>ProductsResponseSchema</code></a></li>
+    <li><a href="#QueryResponseItem"><code>QueryResponseItem</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="AttributeItem"><code>AttributeItem</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">identifier </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">longLabel (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updatedDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+    </div>  <!-- field-items -->
   </div>
-</body>
+  <div class="model">
+    <h3><a name="AttributesResponseSchema"><code>AttributesResponseSchema</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">response (optional)</div><div class="param-desc"><span class="param-type"><a href="#QueryResponseItem">QueryResponseItem</a></span>  </div>
+<div class="param">attributes (optional)</div><div class="param-desc"><span class="param-type"><a href="#AttributeItem">array[AttributeItem]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CatalogItem"><code>CatalogItem</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">identifier </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">longLabel (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">level </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">groupType </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">displayOrder (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">parent (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updatedDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">childCatalogs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> An ordered array of child catalog items </div>
+<div class="param">childProducts (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> An ordered array of child products </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="CatalogsResponseSchema"><code>CatalogsResponseSchema</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">response (optional)</div><div class="param-desc"><span class="param-type"><a href="#QueryResponseItem">QueryResponseItem</a></span>  </div>
+<div class="param">catalogs (optional)</div><div class="param-desc"><span class="param-type"><a href="#CatalogItem">array[CatalogItem]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ProductItem"><code>ProductItem</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">identifier </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">longLabel (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updatedDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span>  format: date-time</div>
+<div class="param">attributes (optional)</div><div class="param-desc"><span class="param-type"><a href="#AttributeItem">array[AttributeItem]</a></span>  </div>
+<div class="param">relatedProducts (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">relatedItems (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="ProductsResponseSchema"><code>ProductsResponseSchema</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">response (optional)</div><div class="param-desc"><span class="param-type"><a href="#QueryResponseItem">QueryResponseItem</a></span>  </div>
+<div class="param">products (optional)</div><div class="param-desc"><span class="param-type"><a href="#ProductItem">array[ProductItem]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="QueryResponseItem"><code>QueryResponseItem</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">cacheId </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">totalSize </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">startIndex </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">pageSize </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
 </html>
